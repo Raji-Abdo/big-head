@@ -1,8 +1,20 @@
+'use client';
+
+import dynamic from 'next/dynamic';
+
+const GameScene = dynamic(() => import('@/components/GameScene'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex min-h-screen items-center justify-center">
+      <div className="text-2xl">Loading game...</div>
+    </div>
+  ),
+});
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-4xl font-bold mb-8">Big Head Football</h1>
-      <p className="text-xl mb-4">Coming soon!</p>
+    <main>
+      <GameScene />
     </main>
   );
 }
